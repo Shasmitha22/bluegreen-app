@@ -1,0 +1,83 @@
+The project is about creating a centralized system to manage a supermarket’s operations — from supplier stock, to warehouse storage, to shelf availability, to customer purchases, and finally to financial records.
+
+The database ensures data integrity with triggers and constraints: it prevents overselling, automatically updates finance when purchases or supplies happen, and flags low stock or near-expiry products.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Environment variable for Blue-Green color
+const color = process.env.DEPLOY_COLOR || 'unknown';
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', color, time: new Date().toISOString() });
+});
+
+app.get('/', (req, res) => {
+  res.send(`<h1>Hello from ${color} instance</h1><p>Uptime: ${process.uptime().toFixed(2)}s</p>`);
+});
+
+app.listen(port, () => {
+  console.log(`App (${color}) listening on port ${port}`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+On top of that, the Streamlit app gives managers and staff an easy interface — they can add suppliers, record warehouse arrivals, handle customer purchases, and immediately see the impact in finance and inventory.
+
+In short, the core idea is: connect inventory management, customer transactions, and finance into one automated, reliable system, with a simple UI for non-technical users.”**
